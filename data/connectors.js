@@ -72,11 +72,10 @@ db.sync({ force: true }).then(() => {
       title: casual.title,
       body: casual.text,
       url: casual.url,
-      longitude: casule.longitude,
+      longitude: casual.longitude,
       latitude: casual.latitude
     }).then((post)=>{
         PostModel.findAndCountAll().then((authors)=>{
-          console.log(authors)
     })
 
     })

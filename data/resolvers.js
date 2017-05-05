@@ -11,7 +11,7 @@ const resolvers = {
       return Author.find({ where: args });
     },
     posts(_,args){
-      return Post.get({where: args});
+      return Post.find({where: args});
     },
     postsAll(_, args){
       return Post.findAll({limit: args.limit ? args.limit : 10, skip: args.skip ? args.skip : 0, first: args.first ? args.first : 0});
