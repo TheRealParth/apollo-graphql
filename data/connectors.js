@@ -75,7 +75,10 @@ db.sync({ force: true }).then(() => {
       longitude: casule.longitude,
       latitude: casual.latitude
     }).then((post)=>{
-      console.log(post)
+        PostModel.findAndCountAll().then((authors)=>{
+          console.log(authors)
+    })
+
     })
   });
 });
@@ -103,13 +106,14 @@ const createPost = (args) => {
 const voteUp = (postId) =>{
   PostModel.find(postId).then((post)=>{
     post.votes++;
-    return post.save();
+    return Promise.resolve(post.save());
   })
 }
+
 const voteDown = (postId) =>{
   PostModel.find(postId).then((post)=>{
     post.votes--;
-    return post.save();
+    return Promise.resolve(post.save());
   })
 }
 
