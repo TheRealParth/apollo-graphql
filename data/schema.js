@@ -14,11 +14,13 @@ type Post {
   longitude: Int
   url: String
   votes: Int
+  count: Int
   author: Author
 }
 type Query {
   author(firstName: String, lastName: String, username: String!): Author
-  posts(id: Int, latitude: Int, longitude: Int, url: String): Post
+  posts(limit: Int, id: Int, latitude: Int, longitude: Int, url: String): Post
+  postsAll(limit: Int, id: [Int], latitude: Int, longitude: Int, url: String): [Post]
 }
 type Mutation {
   createPost(username: String!, title: String!, body: String!, latitude: Int, longitude: Int, url: String!): Post

@@ -98,13 +98,26 @@ const createPost = (args) => {
       })
     })
   }
- 
 }
+
+const voteUp = (postId) =>{
+  PostModel.find(postId).then((post)=>{
+    post.votes++;
+    return post.save();
+  })
+}
+const voteDown = (postId) =>{
+  PostModel.find(postId).then((post)=>{
+    post.votes--;
+    return post.save();
+  })
+}
+
 
 const Author = db.models.author;
 const Post = db.models.post;
 
-export { Author, Post, createPost};
+export { Author, Post, createPost, voteUp, voteDown};
 // import Sequelize from 'sequelize';
 // import casual from 'casual';
 // import _ from 'lodash';

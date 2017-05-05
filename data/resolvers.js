@@ -10,8 +10,11 @@ const resolvers = {
     author(_, args) {
       return Author.find({ where: args });
     },
-    posts(_, args){
-      return Post.find({where: args});
+    posts(_,args){
+      return Post.get({where: args});
+    },
+    postsAll(_, args){
+      return Post.findAll({limit: args.limit ? args.limit : 10});
     }
   },
   Author: {
