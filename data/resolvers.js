@@ -5,6 +5,12 @@ const resolvers = {
     createPost(_, args){
       return createPost(args);
     },
+    voteUpPost(_, args){
+      return voteUpPost(args.id);
+    },
+    voteDownPost(_, args){
+      return voteDownPost(args.id);
+    }
   },
   Query: {
     author(_, args) {
@@ -13,8 +19,8 @@ const resolvers = {
     posts(_,args){
       return Post.find({where: args});
     },
-    postsAll(_, args){
-      return Post.findAll({limit: args.limit ? args.limit : 10, skip: args.skip ? args.skip : 0, first: args.first ? args.first : 0});
+    allPosts(_, args){
+      return Post.findAll({limit: args.first ? args.first + args.skip : 10, skip: args.skip ? args.skip : 0});
     },
     postsFindAndCountAll(_, args){
       return Post.findAndCountAll();
