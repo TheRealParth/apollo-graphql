@@ -56,7 +56,7 @@ db.sync({ force: true }).then(() => {
     return AuthorModel.create({
       firstName: casual.first_name,
       lastName: casual.last_name,
-      username: "psyrotix"
+      username: casual.username
     }).then((author) => {
       return author.createPost({
         title: `A post by ${author.firstName}`,
@@ -66,21 +66,21 @@ db.sync({ force: true }).then(() => {
     });
   });
 });
-db.sync({ force: true }).then(() => {
-  _.times(10, () => {
-    return PostModel.create({
-      title: casual.title,
-      body: casual.text,
-      url: casual.url,
-      longitude: casual.longitude,
-      latitude: casual.latitude
-    }).then((post)=>{
-        PostModel.findAndCountAll().then((authors)=>{
-    })
+// db.sync({ force: true }).then(() => {
+//   _.times(10, () => {
+//     return PostModel.create({
+//       title: casual.title,
+//       body: casual.text,
+//       url: casual.url,
+//       longitude: casual.longitude,
+//       latitude: casual.latitude
+//     }).then((post)=>{
+//         PostModel.findAndCountAll().then((authors)=>{
+//     })
 
-    })
-  });
-});
+//     })
+//   });
+// });
 
 const createPost = (args) => {
   if(args.count > 1){
@@ -123,7 +123,7 @@ const voteDownPost = (postId) =>{
 
 const Author = db.models.author;
 const Post = db.models.post;
-
+const Comment = db.models.post;
 export { Author, Post, createPost, voteUpPost, voteDownPost};
 // import Sequelize from 'sequelize';
 // import casual from 'casual';

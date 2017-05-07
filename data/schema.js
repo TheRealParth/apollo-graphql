@@ -24,7 +24,7 @@ type Query {
   postsFindAndCountAll(limit: Int, id: [Int]): [Post]
 }
 type Mutation {
-  createPost(username: String!, title: String!, body: String!, latitude: Int, longitude: Int, url: String!): Post
+  createPost(username: String!, title: String!, body: String!, latitude: Float, longitude: Float, url: String!): Post
   voteUpPost(id: Int!): Post
   voteDownPost(id: Int!): Post
 }
