@@ -1,4 +1,4 @@
-import { Author, Post, createPost} from './connectors';
+import { Author, Post, voteUpPost, voteDownPost, createPost} from './connectors';
 
 const resolvers = {
   Mutation:{

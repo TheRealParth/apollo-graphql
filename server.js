@@ -20,8 +20,7 @@ graphQLServer.use(function (req, res, next) {
     res.setHeader('Cache-Control', 'public, max-age=31557600');
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, if-none-match, upgrade-insecure-requests, X-Requested-With, Content-Type, Accept");
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader("Access-Control-Allow-Headers", "Origin, if-none-match, upgrade-insecure-requests, X-Requested-With, Content-Type, cache-control, Accept, pragma, authorization");
 
 if ('OPTIONS' == req.method) {
         res.send(200);

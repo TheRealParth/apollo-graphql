@@ -103,16 +103,20 @@ const createPost = (args) => {
 }
 
 const voteUpPost = (postId) =>{
-  PostModel.find(postId).then((post)=>{
+  return PostModel.findById(postId).then((post)=>{
     post.votes++;
-    return Promise.resolve(post.save());
+    return post.save().then((post)=>{
+       return post;
+    });
   })
 }
 
 const voteDownPost = (postId) =>{
-  PostModel.find(postId).then((post)=>{
+  return PostModel.findById(postId).then((post)=>{
     post.votes--;
-    return Promise.resolve(post.save());
+    return post.save().then((post)=>{
+      return post;
+    });
   })
 }
 
